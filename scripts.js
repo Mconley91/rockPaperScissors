@@ -2,9 +2,9 @@
 let playerScore = 0;
 let computerScore = 0;
 //loop to handle turns
-for(let i = 0; i < 3; i++){
+for(let i = 0; i < 5; i++){
     //prompt:
-    const play = prompt('Open the web console to play. The game is best 2 out of 3. Enter "rock", "paper", or "scissors" to begin!').toLowerCase();
+    const play = prompt('Open the web console to play. The game is best out of 5. Enter "rock", "paper", or "scissors" to begin!').toLowerCase();
     //CPU player logic:
     let randomNum = Math.floor(Math.random() * 3) + 1;
     let cpuChoice = randomNum == 1 ? 'rock' : randomNum == 2 ? 'paper' : randomNum == 3 ? 'scissors' : 'ERROR';
