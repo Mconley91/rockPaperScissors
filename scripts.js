@@ -1,5 +1,6 @@
 let playerScore = 0;
 let computerScore = 0;
+let gameOver = false;
 const playerScoreReadout = document.querySelector('#playerScore');
 const computerScoreReadout = document.querySelector('#computerScore');
 const choices = document.querySelector('#choices');
@@ -11,6 +12,9 @@ choices.addEventListener('click',(event)=>{
 });
 
 function playGame(play){
+    if (gameOver){
+        return;
+    }
     let randomNum = Math.floor(Math.random() * 3) + 1;
     let cpuChoice = randomNum == 1 ? 'rock' : randomNum == 2 ? 'paper' : randomNum == 3 ? 'scissors' : 'ERROR';
     let result;
@@ -34,27 +38,32 @@ function playGame(play){
     output.appendChild(roundScore);
     playerScoreReadout.innerText = playerScore;
     computerScoreReadout.innerText = computerScore;
-//final output
-if (playerScore === 5 && computerScore === 5){
-    let victory = document.createElement('li');
-    victory.innerText = "It's a tie!";
-    output.appendChild(victory);
-}
-else if (playerScore === 5){
-    let victory = document.createElement('li');
-    victory.innerText = 'You won the game!';
-    output.appendChild(victory);
-}
-else if(computerScore === 5){
-    let victory = document.createElement('li');
-    victory.innerText = 'Computer wins the game!';
-    output.appendChild(victory);
-}
+    //final output
+    if (playerScore === 5 && computerScore === 5){
+        let victory = document.createElement('li');
+        victory.innerText = "It's a tie!";
+        output.appendChild(victory);
+        gameOver = true;
+    }
+    else if (playerScore === 5){
+        let victory = document.createElement('li');
+        victory.innerText = 'You won the game!';
+        output.appendChild(victory);
+        gameOver = true;
+    }
+    else if(computerScore === 5){
+        let victory = document.createElement('li');
+        victory.innerText = 'Computer wins the game!';
+        output.appendChild(victory);
+        gameOver = true;
+    }
 };
-    
-if (!cheating){
-    console.log(`Final Score= Player: ${playerScore} Computer: ${computerScore}`);
-    playerScore > computerScore ? console.log('You won the game!') : 
-    playerScore == computerScore ? console.log("It's a tie!") : 
-    console.log('Computer wins the game!');
-}
+
+function reset(){
+    playerScore = 0;
+    computerScore = 0;
+    playerScoreReadout.innerText = playerScore;
+    computerScoreReadout.innerText = computerScore;
+    document.querySelector("#output").innerHTML = "";
+    gameOver = false;
+};
