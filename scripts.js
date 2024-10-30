@@ -52,3 +52,9 @@ else if(computerScore === 5){
 }
 };
     
+if (!cheating){
+    console.log(`Final Score= Player: ${playerScore} Computer: ${computerScore}`);
+    playerScore > computerScore ? console.log('You won the game!') : 
+    playerScore == computerScore ? console.log("It's a tie!") : 
+    console.log('Computer wins the game!');
+}
