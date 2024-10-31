@@ -5,6 +5,9 @@ const playerScoreReadout = document.querySelector('#playerScore');
 const computerScoreReadout = document.querySelector('#computerScore');
 const choices = document.querySelector('#choices');
 const output = document.querySelector('#output');
+playerScoreReadout.innerText = playerScore;
+computerScoreReadout.innerText = computerScore;
+
 
 choices.addEventListener('click',(event)=>{
     let btnPressed = event.target.id;
@@ -19,19 +22,19 @@ function playGame(play){
     let cpuChoice = randomNum == 1 ? 'rock' : randomNum == 2 ? 'paper' : randomNum == 3 ? 'scissors' : 'ERROR';
     let result;
     if (cpuChoice=='rock'){
-        play == 'rock' ? result = `You picked ${play}. Computer picks ${cpuChoice}, it's a draw!` : 
-        play == 'paper' ? (result = `You picked ${play}. Computer picks ${cpuChoice}, You win the round!!`,playerScore++) :
-        play == 'scissors' ? (result = `You picked ${play}. Computer picks ${cpuChoice}, Computer wins the round!`,computerScore++) : console.log('ERROR');
+        play == 'rock' ? result = `You picked ${play}. Computer picks ${cpuChoice}, draw!` : 
+        play == 'paper' ? (result = `You picked ${play}. Computer picks ${cpuChoice}, win!!`,playerScore++) :
+        play == 'scissors' ? (result = `You picked ${play}. Computer picks ${cpuChoice}, lost!`,computerScore++) : console.log('ERROR');
     }
     else if (cpuChoice=='paper'){
-        play == 'rock' ? (result = `You picked ${play}. Computer picks ${cpuChoice}, Computer wins the round!`,computerScore++ ) : 
-        play == 'paper' ? result = `You picked ${play}. Computer picks ${cpuChoice}, it's a draw!` :
-        play == 'scissors' ? (result = `You picked ${play}. Computer picks ${cpuChoice}, You win the round!!`, playerScore++) : console.log('ERROR');
+        play == 'rock' ? (result = `You picked ${play}. Computer picks ${cpuChoice}, lost!`,computerScore++ ) : 
+        play == 'paper' ? result = `You picked ${play}. Computer picks ${cpuChoice}, draw!` :
+        play == 'scissors' ? (result = `You picked ${play}. Computer picks ${cpuChoice}, win!!`, playerScore++) : console.log('ERROR');
     }
     else if (cpuChoice=='scissors'){
-        play == 'rock' ? (result = `You picked ${play}. Computer picks ${cpuChoice}, You win the round!!`,playerScore++) : 
-        play == 'paper' ? (result = `You picked ${play}. Computer picks ${cpuChoice}, Computer wins the round!`,computerScore++) :
-        play == 'scissors' ? result = `You picked ${play}. Computer picks ${cpuChoice}, it's a draw!` : console.log('ERROR');
+        play == 'rock' ? (result = `You picked ${play}. Computer picks ${cpuChoice}, win!!`,playerScore++) : 
+        play == 'paper' ? (result = `You picked ${play}. Computer picks ${cpuChoice}, lost!`,computerScore++) :
+        play == 'scissors' ? result = `You picked ${play}. Computer picks ${cpuChoice}, draw!` : console.log('ERROR');
     };
     let roundScore = document.createElement("li");
     roundScore.innerText = result;
